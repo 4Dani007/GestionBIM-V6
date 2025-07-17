@@ -73,7 +73,7 @@ function ProjectFolderTree({ selectedProject, onTreeLoaded }) {
     startProgressBar();
     try {
       const response = await fetch(
-        `http://localhost:5000/api/project-folders-tree?project_id=${projectId}${forceRefresh ? "&force_refresh=true" : ""}`,
+        `https://gestionbim-v6.onrender.com/api/project-folders-tree?project_id=${projectId}${forceRefresh ? "&force_refresh=true" : ""}`,
         { credentials: "include" }
       );
       if (!response.ok) {

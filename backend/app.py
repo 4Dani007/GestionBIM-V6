@@ -54,8 +54,8 @@ def callback():
     token_data = token_response.json()
     session['access_token'] = token_data.get('access_token')
     
-    # Redirigir al frontend (http://localhost:3000/)
-    return redirect("http://localhost:3000/")
+    # Redirigir al frontend (http://localhost:3000/) - cambiar en produccion
+    return redirect("https://gestionbim-v6-1.onrender.com")
 
 @app.route('/profile')
 def profile():

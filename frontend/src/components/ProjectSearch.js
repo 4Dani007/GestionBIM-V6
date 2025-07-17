@@ -11,7 +11,7 @@ function ProjectSearch({ setSelectedProject }) {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch("http://localhost:5000/projects", {
+        const response = await fetch("https://gestionbim-v6.onrender.com/projects", {
           credentials: "include", // Incluir cookies para manejar la sesión
         });
 

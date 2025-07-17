@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/check-auth", {
+        const response = await fetch("https://gestionbim-v6.onrender.com/check-auth", {
           credentials: "include", // Incluir cookies para manejar la sesión
         });
   
@@ -25,11 +25,11 @@ function App() {
             setIsAuthenticated(true);
           } else {
             // Si no está autenticado, redirigir al login de Autodesk
-            window.location.href = "http://localhost:5000/login";
+            window.location.href = "https://gestionbim-v6.onrender.com/login";
           }
         } else {
           // Si no está autenticado, redirigir al login de Autodesk
-          window.location.href = "http://localhost:5000/login";
+          window.location.href = "https://gestionbim-v6.onrender.com/login";
         }
       } catch (error) {
         console.error("Error verificando autenticación:", error);
@@ -50,7 +50,7 @@ function App() {
 
   const handleLogout = () => {
     // Implementar lógica de logout
-    window.location.href = "http://localhost:5000/logout";
+    window.location.href = "https://gestionbim-v6.onrender.com/logout";
   };
 
   // Si no está autenticado, mostrar un mensaje de carga

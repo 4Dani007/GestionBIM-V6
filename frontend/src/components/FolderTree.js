@@ -12,7 +12,7 @@ function FolderTree({ selectedProject }) {
   const loadSubfolders = useCallback(async (projectId, folderId, parentPath) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/subfolders?project_id=${projectId}&folder_id=${folderId}`,
+        `https://gestionbim-v6.onrender.com/subfolders?project_id=${projectId}&folder_id=${folderId}`,
         { credentials: "include" }
       );
 
@@ -50,7 +50,7 @@ function FolderTree({ selectedProject }) {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/project-folders?project_id=${projectId}`,
+        `https://gestionbim-v6.onrender.com/project-folders?project_id=${projectId}`,
         { credentials: "include" }
       );
 

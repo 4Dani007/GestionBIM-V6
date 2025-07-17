@@ -24,7 +24,7 @@ function PermissionsTable({ folderId, projectId, folderName, allFolders }) {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/permissions?urn=${folderId}&project_id=${projectId}`,
+        `https://gestionbim-v6.onrender.com/api/permissions?urn=${folderId}&project_id=${projectId}`,
         { credentials: "include" }
       );
 

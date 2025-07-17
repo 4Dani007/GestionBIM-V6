@@ -60,7 +60,7 @@ const UserSearch = () => {
         offset: offset.toString()
       });
 
-      const response = await fetch(`http://localhost:5000/api/search-users?${params}`, {
+      const response = await fetch(`https://gestionbim-v6.onrender.com/api/search-users?${params}`, {
         credentials: 'include'
       });
 
@@ -127,7 +127,7 @@ const UserSearch = () => {
     setProjectsError(null);
 
     try {
-      const response = await fetch('http://localhost:5000/projects', {
+      const response = await fetch('https://gestionbim-v6.onrender.com/projects', {
         credentials: 'include'
       });
 
@@ -214,7 +214,7 @@ const UserSearch = () => {
       });
 
       // Enviar la asignación para proyectos BIM 360
-      const bim360Res = await fetch('http://localhost:5000/api/import-users-to-project', {
+      const bim360Res = await fetch('https://gestionbim-v6.onrender.com/api/import-users-to-project', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -334,7 +334,7 @@ const UserSearch = () => {
       });
 
       // Enviar la asignación para proyectos ACC
-      const accRes = await fetch('http://localhost:5000/api/import-users-to-acc-project', {
+      const accRes = await fetch('https://gestionbim-v6.onrender.com/api/import-users-to-acc-project', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
