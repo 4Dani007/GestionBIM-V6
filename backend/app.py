@@ -11,6 +11,10 @@ load_dotenv()
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, origins=["https://gestionbim-v6-1.onrender.com"])
+
+# Configuración para cookies cross-site
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True
 app.secret_key = os.urandom(24)
 
 # Cargar las credenciales de Autodesk desde el archivo .env
