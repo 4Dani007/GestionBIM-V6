@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, origins=["https://gestionbim-v6-1.onrender.com"])
 app.secret_key = os.urandom(24)
 
 # Cargar las credenciales de Autodesk desde el archivo .env
