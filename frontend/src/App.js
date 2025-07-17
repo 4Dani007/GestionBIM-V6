@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch("https://gestionbim-v6.onrender.com/check-auth", {
+        const response = await fetch("https://gestionbim-v6.onrender.com/api/check-auth", {
           credentials: "include", // Incluir cookies para manejar la sesión
         });
   
