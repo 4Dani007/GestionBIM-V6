@@ -9,33 +9,35 @@ function App() {
   const [userProfile, setUserProfile] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeModule, setActiveModule] = useState(null);
+  const [loading, setLoading] = useState(true); // 👈 Nuevo estado
 
   // Verificar si el usuario está autenticado al cargar la aplicación
   useEffect(() => {
     const checkAuth = async () => {
       try {
         const response = await fetch("https://gestionbim-v6.onrender.com/api/check-auth", {
-          credentials: "include", // Incluir cookies para manejar la sesión
+          credentials: "include",
         });
-  
+
         if (response.ok) {
           const data = await response.json();
           if (data.authenticated) {
             setUserProfile(data.user);
             setIsAuthenticated(true);
           } else {
-            // Si no está autenticado, redirigir al login de Autodesk
             window.location.href = "https://gestionbim-v6.onrender.com/login";
           }
         } else {
-          // Si no está autenticado, redirigir al login de Autodesk
           window.location.href = "https://gestionbim-v6.onrender.com/login";
         }
       } catch (error) {
         console.error("Error verificando autenticación:", error);
+        window.location.href = "https://gestionbim-v6.onrender.com/login";
+      } finally {
+        setLoading(false); // 👈 Marcar como completada la carga
       }
     };
-  
+
     checkAuth();
   }, []);
 
@@ -49,17 +51,16 @@ function App() {
   };
 
   const handleLogout = () => {
-    // Implementar lógica de logout
     window.location.href = "https://gestionbim-v6.onrender.com/logout";
   };
 
-  // Si no está autenticado, mostrar un mensaje de carga
-  if (!isAuthenticated) {
+  // 👇 Esperar hasta que termine la verificación de sesión
+  if (loading) {
     return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         height: '100vh',
         fontSize: '1.2rem',
         color: '#6b7280'
@@ -67,6 +68,11 @@ function App() {
         Cargando...
       </div>
     );
+  }
+
+  // 👇 Ya se cargó pero no está autenticado, no mostrar nada más (por si acaso)
+  if (!isAuthenticated) {
+    return null;
   }
 
   return (
@@ -78,7 +84,6 @@ function App() {
         onLogout={handleLogout}
         showBackButton={activeModule !== null}
       />
-      
       <main className="app-main">
         {activeModule ? (
           <ModuleRouter
